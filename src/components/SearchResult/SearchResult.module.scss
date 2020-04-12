@@ -1,0 +1,56 @@
+@import '../../styles/variables';
+
+.result-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+
+    .activity {
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0 0 10px rgba($black, .5);
+        }
+    }
+}
+
+.activity {
+    background-color: $pure-white;
+    box-shadow: 0 0 6px rgba($black, .3);
+    border-radius: 5px;
+    padding: $spacer;
+    transition: box-shadow .25s;
+
+    &.single {
+        .id {
+            margin-bottom: $spacer * 2;
+        }
+
+        .details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            h4 {
+                margin-bottom: $spacer;
+            }
+        }
+
+        .safety-data-sheet {
+            white-space: pre-line;
+        }
+
+        .equipment {
+            &:not(:last-of-type) {
+                margin-bottom: $spacer * 2;
+            }
+
+            img {
+                width: 60%;
+            }
+
+            p {
+                font-style: italic;
+            }
+        }
+    }
+}
