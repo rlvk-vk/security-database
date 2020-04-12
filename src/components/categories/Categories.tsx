@@ -77,10 +77,14 @@ const categories = [
 	}
 ]
 
-const Categories: React.FC = () => {
+interface ICategoriesProps {
+	setSearchword(word: string): any
+}
+
+const Categories: React.FC<ICategoriesProps> = ({setSearchword}) => {
 	const renderCategories = () => {
 		return categories.map(category => {
-			return <Category key={category.id} category={category} />
+			return <Category setSearchword={setSearchword} key={category.id} category={category} />
 		})
 	}
 
