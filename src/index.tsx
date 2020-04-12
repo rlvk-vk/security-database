@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import * as serviceWorker from './serviceWorker'
+import {BrowserRouter} from 'react-router-dom'
 
 import App from './components/App'
 import ProviderWrapper from './redux/ProviderWrapper'
@@ -9,7 +10,7 @@ import './index.scss'
 
 ReactDOM.render(
 	<ProviderWrapper>
-		<App />
+		<BrowserRouter><App /></BrowserRouter>
 	</ProviderWrapper>,
 	document.getElementById('root')
 )

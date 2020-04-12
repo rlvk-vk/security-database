@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
+import { NavLink, Route, useHistory } from 'react-router-dom'
+import { activities } from '../data/tempData'
 import { ReactComponent as SearchIcon } from '../icons/search.svg'
+import { convertDotToDash } from '../utils/common'
 import styles from './App.module.scss'
 import Categories from './categories/Categories'
 import logo from './emerson-logo.png'
+import SearchResult from './SearchResult/SearchResult'
+import Single from './SearchResult/Single'
 
 const App: React.FC = () => {
 	const [searchword, setSearchword] = useState('')
+	const history = useHistory()
 
 	const submitSearch = (event: any) => {
 		if (event.key === 'Enter' || event.target.nodeName === 'svg') {
-			console.log(searchword)
+			history.push('/search')
+			event.target.blur()
 		}
 	}
 
@@ -17,9 +24,28 @@ const App: React.FC = () => {
 		setSearchword(event.target.value)
 	}
 
+	const renderRoutes = () => {
+		const routes = [
+			{ path: '/', exact: true, render: () => <Categories setSearchword={setSearchword}/> },
+			{ path: '/search', exact: true, render: () => <SearchResult searchWords={searchword}/> }
+		]
+
+		for (const i in activities) {
+			routes.push({
+				path: `/activity/${convertDotToDash(activities[i].id)}`,
+				exact: true,
+				render: () => <Single activity={activities[i]}/>
+			})
+		}
+
+		return routes.map(route => {
+			return <Route key={route.path} path={route.path} exact={route.exact} render={route.render}/>
+		})
+	}
+
 	return (
 		<div className={styles.app}>
-			<img className={styles.logo} src={logo} alt="emerson-logo"/>
+			<NavLink to="/" exact={true}><img className={styles.logo} src={logo} alt="emerson-logo"/></NavLink>
 			<h1>Security Database</h1>
 
 			<div className={styles.search}>
@@ -32,7 +58,7 @@ const App: React.FC = () => {
 				<SearchIcon onClick={submitSearch}/>
 			</div>
 
-			<Categories/>
+			{renderRoutes()}
 		</div>
 	)
 }
