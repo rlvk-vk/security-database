@@ -25,7 +25,7 @@ const SearchResult: React.FC<ISearchResultProps> = ({ searchWords }) => {
 		if (result) {
 			return result.map((activity: any) => {
 				return (
-					<NavLink to={`/activity/${convertDotToDash(activity.id)}`}>
+					<NavLink key={activity.id} to={`/activity/${convertDotToDash(activity.id)}`}>
 						<div className={styles.activity}>
 							<h2 className={styles.id}>{activity.id}</h2>
 						</div>
