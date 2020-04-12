@@ -1,0 +1,34 @@
+@import '../../../styles/variables';
+
+.category {
+    background-color: $pure-white;
+    box-shadow: 0 0 6px rgba($black, .3);
+    cursor: pointer;
+    border-radius: 5px;
+    padding: $spacer * 2 $spacer;
+    transition: box-shadow .25s;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+        box-shadow: 0 0 10px rgba($black, .5);
+    }
+
+    .icon {
+        flex: 1;
+
+        svg {
+            height: 50px;
+            fill: $cobalt;
+        }
+    }
+
+    .id {
+        font-size: 140%;
+        font-weight: 700;
+    }
+
+    .name {
+        font-size: 110%;
+    }
+}

@@ -1,8 +1,40 @@
 @import '../styles/variables';
 
 .app {
-    padding: 5vh 0;
+    padding: $spacer;
     text-align: center;
+    min-height: 100vh;
+    background-color: $white;
+
+    .logo {
+        height: 100px;
+    }
+
+    .search {
+        position: relative;
+
+        input {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: $spacer;
+            padding: 10px;
+            border: 0;
+            box-shadow: 0 0 6px rgba($black, .3);
+            text-align: center;
+
+            &::placeholder {
+                text-align: center;
+            }
+        }
+
+        svg {
+            height: 25px;
+            position: absolute;
+            right: 10px;
+            top: 7px;
+            fill: $cobalt;
+        }
+    }
 
     h1 {
         margin-bottom: $spacer;

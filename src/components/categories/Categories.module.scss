@@ -1,0 +1,7 @@
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 20px;
+    height: calc(100vh - 40px - 100px - 60px - 60px);
+}

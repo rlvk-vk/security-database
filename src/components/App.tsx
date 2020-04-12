@@ -1,28 +1,23 @@
 import React from 'react'
-import { connect } from 'react-redux'
-
-import { addTextToData } from '../redux/data/data.action'
-import { IDataState } from '../types/redux/data.types'
-
 import styles from './App.module.scss'
+import Categories from './categories/Categories'
+import logo from './emerson-logo.png'
+import { ReactComponent as SearchIcon } from '../icons/search.svg'
 
-interface IAppProps {
-	data: string[]
-}
-
-const App: React.FC<IAppProps> = props => {
+const App: React.FC = () => {
 	return (
 		<div className={styles.app}>
-			<h1>VK Media</h1>
-			<h4>React Redux TypeScript Template</h4>
+			<img className={styles.logo} src={logo} alt="emerson-logo"/>
+			<h1>Security Database</h1>
+
+			<div className={styles.search}>
+				<input type="text" placeholder="Search activity..."/>
+				<SearchIcon />
+			</div>
+
+			<Categories/>
 		</div>
 	)
 }
 
-const mapStateToProps = (state: IDataState) => {
-	return {
-		data: state.data
-	}
-}
-
-export default connect(mapStateToProps, { addTextToData })(App)
+export default App
