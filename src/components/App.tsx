@@ -46,7 +46,7 @@ const App: React.FC = () => {
 	return (
 		<div className={styles.app}>
 			<NavLink to="/" exact={true}><img className={styles.logo} src={logo} alt="emerson-logo"/></NavLink>
-			<h1>Security Database</h1>
+			<h1>Personnel Protection</h1>
 
 			<div className={styles.search}>
 				<input type="text"
