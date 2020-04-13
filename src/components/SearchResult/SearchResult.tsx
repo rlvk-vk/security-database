@@ -11,7 +11,7 @@ interface ISearchResultProps {
 const SearchResult: React.FC<ISearchResultProps> = ({ searchWords }) => {
 	const findResults = () => {
 		return activities.filter((activity: any) => {
-			if (searchWords && activity.id.includes(searchWords)) {
+			if (searchWords && (activity.id.includes(searchWords) || activity.safetyDataSheet.includes(searchWords))) {
 				return activity
 			}
 
